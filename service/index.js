@@ -1,10 +1,15 @@
+require('./helpers/env.js')
+
 const Koa = require('koa')
 
 const logger = require('./logger.js')
+
 const app = new Koa()
 
-const server = app.listen(3000, () => {
-  logger.info({ port: 3000 }, 'App started successfully')
+const APP_PORT = process.env.APP_PORT
+
+const server = app.listen(APP_PORT, () => {
+  logger.info({ port: APP_PORT }, 'App started successfully')
 })
 
 server.on('error', (err) => {

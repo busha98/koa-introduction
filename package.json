@@ -19,6 +19,7 @@
   "homepage": "https://github.com/busha98/koa-introduction#readme",
   "dependencies": {
     "dateformat": "^3.0.3",
+    "dotenv": "^8.1.0",
     "koa": "^2.8.1",
     "nodemon": "^1.19.1",
     "pino": "^5.13.2",

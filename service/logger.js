@@ -3,7 +3,7 @@ const dateFormat = require('dateformat')
 
 const DATE_FORMAT = 'isoDateTime'
 
-const level = 10
+const level = +process.env.LOGGER_LEVEL
 
 const logger = pino({
   messageKey: 'message',
