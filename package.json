@@ -4,7 +4,7 @@
   "description": "koa-introduction",
   "main": "./service/index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon index.js | pino-pretty",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/busha98/koa-introduction#readme",
   "dependencies": {
+    "dateformat": "^3.0.3",
     "koa": "^2.8.1",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "pino": "^5.13.2",
+    "pino-pretty": "^3.2.1"
   },
   "devDependencies": {
     "eslint": "^6.2.0",
