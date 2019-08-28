@@ -21,6 +21,7 @@
     "dateformat": "^3.0.3",
     "dotenv": "^8.1.0",
     "koa": "^2.8.1",
+    "koa-router": "^7.4.0",
     "nodemon": "^1.19.1",
     "pino": "^5.13.2",
     "pino-pretty": "^3.2.1"
