@@ -5,6 +5,7 @@
   "main": "./service/index.js",
   "scripts": {
     "start": "nodemon index.js | pino-pretty",
+    "migrate": "db-migrate up",
     "lint": "eslint --ext .js service/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,6 +26,9 @@
   },
   "dependencies": {
     "dateformat": "^3.0.3",
+    "db-migrate": "^0.11.6",
+    "db-migrate-mysql": "^1.1.10",
+    "db-migrate-shared": "^1.2.0",
     "dotenv": "^8.1.0",
     "koa": "^2.8.1",
     "koa-bodyparser": "^4.2.1",
