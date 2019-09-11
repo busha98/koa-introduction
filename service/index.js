@@ -1,4 +1,5 @@
 require('./helpers/env.js')
+require('./helpers/promise.js')
 
 const Koa = require('koa')
 
