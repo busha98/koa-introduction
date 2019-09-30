@@ -13,6 +13,7 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
+      "require-atomic-updates": "off",
       "max-len": ["error", {
         "code": 100,
         "ignoreStrings": true

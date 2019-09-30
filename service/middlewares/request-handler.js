@@ -1,8 +1,8 @@
 const logger = require('../logger.js')
 
-const requestHandler = () => (ctx, next) => {
+const requestHandler = () => async (ctx, next) => {
   ctx.logger = logger
-  next()
+  await next()
 }
 
 module.exports = requestHandler

@@ -5,11 +5,12 @@ const Koa = require('koa')
 
 const cors = require('koa-cors')
 const helmet = require('koa-helmet')
-// const bodyParser = require('koa-bodyparser')
+const bodyParser = require('koa-bodyparser')
 
 const logger = require('./logger.js')
 const router = require('./router')
 const requestHandler = require('./middlewares/request-handler')
+const responseHandler = require('./middlewares/response-handler')
 
 const app = new Koa()
 
@@ -21,7 +22,10 @@ app.use(
     allowMethods: ['GET', 'HEAD', 'PUT', 'POST', 'DELETE', 'PATCH']
   })
 )
+
 app.use(requestHandler())
+app.use(responseHandler())
+app.use(bodyParser())
 app.use(helmet())
 
 app.use(router.routes())
