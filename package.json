@@ -38,7 +38,9 @@
     "koa-router": "^7.4.0",
     "nodemon": "^1.19.1",
     "pino": "^5.13.2",
-    "pino-pretty": "^3.2.1"
+    "pino-pretty": "^3.2.1",
+    "ramda": "^0.26.1",
+    "validator": "^12.1.0"
   },
   "devDependencies": {
     "eslint": "^6.2.0",

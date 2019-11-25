@@ -5,7 +5,9 @@ exports.up = async function up(db) {
     id: { type: dataType.INTEGER, primaryKey: true, autoIncrement: true },
     created_at: { type: dataType.TIMESTAMP, defaultValue: 'CURRENT_TIMESTAMP' },
     updated_at: { type: dataType.TIMESTAMP, defaultValue: 'CURRENT_TIMESTAMP' },
-    email: { type: dataType.CHAR, length: 50, notNull: true }
+    email: { type: dataType.CHAR, length: 50, notNull: true, unique: true },
+    password: { type: dataType.CHAR, length: 128, notNull: true },
+    salt: { type: dataType.CHAR, length: 32, notNull: true }
   })
 }
 
