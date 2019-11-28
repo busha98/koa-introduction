@@ -17,7 +17,7 @@ const login = async (ctx) => {
     const hash = sha512(sha512(password, salt), process.env.GLOBAL_SALT)
     isValid = hashed_password === hash
     jwt_token = jwt.sign({ id, email },
-      process.env.JWT_PRIVATE_KEY,
+      process.env.RSA_PRIVATE_KEY,
       { algorithm: 'RS256', expiresIn: process.env.JWT_EXPIRES_IN }
     )
   } catch(err) {
