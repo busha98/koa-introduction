@@ -1,19 +1,25 @@
+const jwt = require('jsonwebtoken')
+
 const mysql = require('../../../libs/mysql.js')
 const { getRandomString, sha512 } = require('../../../helpers/auth.js')
 const { insertUser, selectUserByEmail } = require('../repositories/mysql')
 
 const login = async (ctx) => {
-  ctx.logger.debug('login')
+  ctx.logger.debug('login start')
 
-  let isValid
+  let isValid, jwt_token
 
   const connection = await mysql.getConnection()
   const { email, password } = ctx.request.body
 
   try {
-    const [{ salt, password: hashed_password }] = await selectUserByEmail(connection, { email })
+    const [{ id, salt, password: hashed_password }] = await selectUserByEmail(connection, { email })
     const hash = sha512(sha512(password, salt), process.env.GLOBAL_SALT)
     isValid = hashed_password === hash
+    jwt_token = jwt.sign({ id, email },
+      process.env.JWT_PRIVATE_KEY,
+      { algorithm: 'RS256', expiresIn: process.env.JWT_EXPIRES_IN }
+    )
   } catch(err) {
     ctx.logger.error({ message: 'login error' })
   } finally {
@@ -21,14 +27,16 @@ const login = async (ctx) => {
   }
 
   if (isValid) {
-    ctx.res.ok({ message: 'ok' })
+    ctx.res.ok({ data: { jwt_token } })
   } else {
     ctx.res.badRequest({ message: 'error' })
   }
+
+  ctx.logger.debug({ message: 'login end' })
 }
 
 const register = async (ctx) => {
-  ctx.logger.debug({ message: 'registration' })
+  ctx.logger.debug({ message: 'registration start' })
 
   let isValid
 
@@ -52,6 +60,8 @@ const register = async (ctx) => {
   } else {
     ctx.res.badRequest({ message: 'error' })
   }
+
+  ctx.logger.debug({ message: 'registration end' })
 }
 
 
